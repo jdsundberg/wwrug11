@@ -1,0 +1,16 @@
+#idx1.blocktable
+  %h2
+    %span 
+      Recent Searches
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Action
+
+        %tbody
+          - session["recent"].reverse.each do |sess|
+            %tr
+              %td
+                =link_to(sess,sess)

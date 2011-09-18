@@ -1,0 +1,20 @@
+.blockform
+  %h2 Login
+  .box
+    %form{:id=>"login", :method=>"post", :action=>"/login"}
+      .inform
+        %fieldset
+          <legend>Enter your username and password below</legend>
+          .infldset
+            <label class="conl"><strong>Username:</strong><br/><input name="user_id" type="text" size="25" maxlength="25" tabindex="1"/><br/></label>
+            <label class="conl"><strong>Password:</strong><br/><input name="password" type="password" size="25" maxlength="25" tabindex="2"/><br/></label>
+
+            .p{:class=>"clearb"}
+              If you have forgotten your password contact your BMC Remedy Admin.
+        // fieldset
+      //inform
+      .p
+        <input type="submit" name="login" value="Login" tabindex="3"/>
+    //form
+  //box
+//blockform

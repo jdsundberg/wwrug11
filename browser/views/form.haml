@@ -1,0 +1,26 @@
+#idx1.blocktable
+  %h2
+    %span 
+      =@form
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} ID
+          %th.tcl{:scope => "col"} Name
+          %th.tcl{:scope => "col"} Val
+          %th.tcl{:scope => "col"} Val
+
+        %tbody
+          - @entries.each do |entry|
+            %tr
+              %td
+                = link_to("/form/"+@form+"/"+entry['1'],entry['1'])
+              %td
+                = entry["8"]
+              %td
+                = entry["3"]
+              %td
+                = entry["7"]
+

@@ -1,0 +1,53 @@
+#idx1.blocktable
+  %h2
+    %span 
+      Field map
+
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Name
+          %th.tcl{:scope => "col"} Number
+          %th.tcl{:scope => "col"} Attributes
+          %th.tcl{:scope => "col"} DataType
+          %th.tcl{:scope => "col"} Type
+          %th.tcl{:scope => "col"} EntryMode
+
+
+        %tbody
+          - @form_details.keys.sort.each do |form_field|
+            %tr
+              %td
+                &= @form_details[form_field]["Name"]
+              %td
+                &= @form_details[form_field]["ID"]
+              %td
+                - @form_details[form_field]["attributes"].each do |attr|
+                  = attr
+                  <br/>
+              %td 
+                &= @form_details[form_field]["DataType"]
+              %td
+                &= @form_details[form_field]["Type"]
+              %td
+                &= @form_details[form_field]["EntryMode"]
+
+
+#idx2.blocktable
+  %h2
+    %span 
+      Records
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} ID
+        %tbody
+          - @entries.each do |entry|
+            %tr
+              %td
+                = link_to("/form/"+@form+"/"+entry,entry)
+

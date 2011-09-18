@@ -1,0 +1,23 @@
+#idx1.blocktable
+  %h2
+    %span 
+      Statistics
+      %p.conr
+        =session["user_id"]
+        | demo.kineticdata.com
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Name
+          %th.tcl{:scope => "col"} Value
+
+
+        %tbody
+          - @statistics.keys.sort.each do |stat|
+            %tr
+              %td
+                &= stat
+              %td
+                &= @statistics[stat]

@@ -1,0 +1,19 @@
+#idx1.blocktable
+  %h2
+    %span 
+      Forms
+      %p.conr
+        =session["user_id"]
+        | demo.kineticdata.com
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Name
+
+        %tbody
+          - @forms.each do |form_name|
+            %tr
+              %td 
+                =link_to("/form/"+form_name,form_name)

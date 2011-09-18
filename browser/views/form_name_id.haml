@@ -1,0 +1,28 @@
+#idx1.blocktable
+  %h2
+    %span 
+      = link_to("/form/#{@form}",@form) 
+      >
+      = link_to("/form/#{@form}/#{@entry['1']}",@entry['1'])
+      %p.conr
+        (
+        = link_to("/form/#{@form}/#{@entry['1']}/previous","Prev")
+        |
+        = link_to("/form/#{@form}/#{@entry['1']}/next","Next")
+        )
+
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Field
+          %th.tcl{:scope => "col"} Value
+
+        %tbody
+          - @entry.keys.sort.each do |field|
+            %tr
+              %td 
+                = @form_details[field]["Name"]
+              %td
+                &=@entry[field]

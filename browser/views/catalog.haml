@@ -1,0 +1,7 @@
+%h1 Catalogs
+
+#content
+ - @catalog_list.each do |cat_name|
+  =link_to("/catalog/"+cat_name,cat_name)
+  %br
+	

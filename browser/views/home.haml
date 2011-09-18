@@ -1,0 +1,70 @@
+#idx1.blocktable
+  %h2
+    %span 
+      Server Info
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Field
+          %th.tcl{:scope => "col"} Value
+
+        %tbody
+          %tr
+            %td
+              SERVER VERSION
+            %td
+              =@configs["SERVER_VERSION"]
+          %tr
+            %td
+              OPERATING SYSTEM
+            %td
+              =@configs["OPERATING_SYSTEM"]
+          %tr
+            %td
+              DATABASE TYPE
+            %td
+              =@configs["DATABASE_TYPE"]
+          %tr
+            %td
+              DATABASE VERSION
+            %td
+              =@configs["DATABASE_VERSION"]
+          %tr
+            %td
+              UPTIME
+            %td
+              =seconds_to_human(@statistics["UPTIME"].to_i/100.to_i)
+          %tr
+            %td
+              SERVER START TIME
+            %td
+              &=Time.at(@statistics["SERVER_START_TIME"].to_i)
+
+
+#idx2.blocktable
+  %h2
+    %span 
+      Users
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Field
+          %th.tcl{:scope => "col"} Value
+
+        %tbody
+          - @statistics.keys.sort.each do |stat|
+          - next unless stat.match(/USERS/)
+            %tr
+              %td
+                &= stat
+              %td
+                &= @statistics[stat]
+
+
+
+
+
