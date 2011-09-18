@@ -1,0 +1,51 @@
+#idx1.blocktable
+  %h2
+    %span 
+      &= @orig_file_name
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          %th.tcl{:scope => "col"} Column
+          %th.tc4{:scope => "col"} Value
+
+
+        %tbody
+          %tr
+            %td
+              Schema Name
+            %td
+              &= @meta_info["schema"]
+
+          %tr
+            %td
+              Data rows
+            %td
+              &= @meta_info["data_count"] 
+
+  %form{:action=>"/display/#{@meta_info['new_filename']}",:method=>"post",:enctype=>"multipart/form-data"}           
+    .box
+      .inbox
+        %table{:cellspacing => "0"}
+          %thead
+          %tr
+            %th.tcl{:scope => "col"} FieldName
+            %th.tc4{:scope => "col"} FieldNumber
+            %th.tc4{:scope => "col"} DataType
+
+
+          %tbody
+            - @meta_info["fields"].each_index do |index|
+              %tr
+                %td
+                  %input{:type=>"checkbox", :name=>"#{@meta_info["fieldid"][index]}", :value=>1}
+                  &= @meta_info["fields"][index]
+                %td
+                  &= @meta_info["fieldid"][index]
+                %td
+                  &= @meta_info["dtypes"][index] 
+    %input{:type=>"submit",:value=>"Display"}
+
+
+                

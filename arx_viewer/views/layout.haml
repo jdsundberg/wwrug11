@@ -1,0 +1,33 @@
+!!!
+%html{:dir => "ltr", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %link{:href => "http://www.kineticdata.com/css/PageShell-Main.css", :rel => "stylesheet", :type => "text/css"}/
+    /[if IE] <link rel="stylesheet" type="text/css" href="http://www.kineticdata.com/css/IE_Targeting.css" />
+    / START script loads used globally
+    %script{:src => "http://www.kineticdata.com/includes/MainNavMenu.js", :type => "text/javascript"}
+    / next script call MUST be listed last for loader to work
+    %script{:src => "http://www.kineticdata.com/includes/ScriptLoader.js", :type => "text/javascript"}
+    / END script loading
+    %title Kinetic Data, Inc.
+    %link{:href => "http://support.kineticdata.com/style/Lithium.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://www.kineticdata.com/images/favicon-orange.png", :rel => "icon", :type => "image/x-icon"}/
+  %body
+    #taglineContainer
+      #tagline
+        %h2 ARX Viewer
+    #mainContainer
+      #punwrap
+        #punindex.pun
+          = yield
+        / /punindex
+      / /punwrap
+    / /mainContainer
+    #footerContainer
+      #footer
+        %ul
+          %li ARX Viewer
+          %li John Sundberg
+
+
+

@@ -1,0 +1,41 @@
+#idx1.blocktable
+  %h2
+    %span
+      &= @file_contents["schema"]
+      &= @file_contents["data_count"]
+      rows
+  .box
+    .inbox
+      %table{:cellspacing => "0"}
+        %thead
+        %tr
+          - @selected_field_name.each do |field_name|
+            %td
+              &= field_name
+        %tbody
+          - if(@has_complex_fields != true)
+            - @selected_field_data.each do |field|
+              %tr
+                - field.each do |element|
+                  %td
+                    &= element
+          - if(@has_complex_fields == true)
+            - re_rows = "\003"
+            - re_columns = "\004"
+            - @selected_field_data.each do |field|
+              %tr
+                - field.each do |element|
+                  &= element.to_s[-1,1]
+                  %td
+                    - if((element.to_s[-1,1] == re_rows) or (element.to_s[-1,1] == re_columns))
+                      - tmprows = element.to_s.split(re_rows)
+                      - tmprows.each_with_index do |tmprow,r_index|
+                        - tmp = tmprow.to_s.split(re_columns)
+                        - tmp.each_with_index do |e,c_index|
+                          &= e
+                          - if (c_index < tmp.size)
+                            = "&nbsp;"
+                        - if(r_index < tmprows.size) 
+                          = "<br/>"
+                    - else
+                      &= element
